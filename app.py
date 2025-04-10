@@ -5,6 +5,7 @@ import numpy as np
 from pathlib import Path
 from typing import Dict, List, Any, Tuple
 import plotly.graph_objects as go
+import datetime
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -18,7 +19,16 @@ from bonds import (
     calculate_convexity,
     get_price_impact
 )
-from plots import plot_yield_curve, plot_price_sensitivity, plot_comparison_chart
+from plots import (
+    plot_yield_curve, 
+    plot_price_sensitivity, 
+    plot_comparison_chart,
+    plot_yield_curve_3d,
+    plot_historical_yields,
+    plot_yield_vs_inflation,
+    plot_bond_risk_return
+)
+from market_data import fetch_market_data, update_predefined_bonds_with_market_data
 
 # Set page config
 st.set_page_config(
@@ -99,6 +109,34 @@ def main():
             format_func=lambda x: countries.get(x, x)
         )
         
+        # Add the sync button for fetching live data
+        sync_col1, sync_col2 = st.columns([3, 1])
+        with sync_col1:
+            st.write("Echtzeit-Marktdaten:")
+        with sync_col2:
+            if st.button("🔄 Sync", help="Lädt aktuelle Marktdaten für die ausgewählten Anleihen"):
+                with st.spinner("Lade Marktdaten..."):
+                    try:
+                        # Fetch live market data
+                        market_data = fetch_market_data(selected_country)
+                        
+                        if market_data and "bonds" in market_data:
+                            # Update predefined bonds with fetched data
+                            update_predefined_bonds_with_market_data()
+                            
+                            # Clear cache to load new data
+                            st.cache_data.clear()
+                            
+                            # Reload predefined bonds
+                            predefined_bonds = load_predefined_bonds()
+                            
+                            # Show success message
+                            st.success(f"Marktdaten für {countries[selected_country]} aktualisiert! ({datetime.datetime.now().strftime('%H:%M:%S')})")
+                        else:
+                            st.error("Keine Daten verfügbar.")
+                    except Exception as e:
+                        st.error(f"Fehler beim Abrufen der Daten: {str(e)}")
+        
         st.divider()
         
         # Load mode
@@ -116,6 +154,11 @@ def main():
         st.subheader("Anzeigeoptionen")
         show_real_yield = st.checkbox("Realzins anzeigen", value=True)
         show_additional_metrics = st.checkbox("Erweiterte Metriken", value=False)
+        
+        # Add visualization options
+        st.subheader("Visualisierung")
+        smooth_curves = st.checkbox("Glatte Kurven", value=True)
+        show_advanced_charts = st.checkbox("Erweiterte Graphen", value=True)
         
         # Add a reset button 
         if st.button("Zurücksetzen", use_container_width=True):
@@ -333,6 +376,83 @@ def main():
                             title="Vergleich der Duration"
                         )
                         st.plotly_chart(fig_duration, use_container_width=True)
+                
+                # Add advanced visualizations with smooth curves and complex charts
+                if smooth_curves and show_advanced_charts:
+                    st.subheader("Erweiterte Visualisierungen")
+                    
+                    # Create tabs for different advanced visualizations
+                    adv_tab1, adv_tab2, adv_tab3 = st.tabs(["Inflation vs Yield", "Risk/Return", "Marktanalyse"])
+                    
+                    with adv_tab1:
+                        # Get country name for the title
+                        country_name = countries.get(selected_country, "Custom")
+                        
+                        # Plot yield vs inflation
+                        fig_inflation = plot_yield_vs_inflation(
+                            sorted_bonds,
+                            country_name=country_name.split(" ", 1)[1] if " " in country_name else country_name,
+                            title=f"Yield vs Inflation: {country_name}"
+                        )
+                        
+                        st.plotly_chart(fig_inflation, use_container_width=True)
+                        
+                        st.markdown("""
+                        ### Interpretation:
+                        - **Nominal Yield**: Die erwartete Rendite ohne Berücksichtigung der Inflation
+                        - **Inflation**: Die erwartete Inflationsrate
+                        - **Real Yield**: Inflationsbereinigte Rendite (Nominal Yield - Inflation)
+                        
+                        Ein positiver Realzins bedeutet, dass die Anleihe die Kaufkraft über die Zeit erhält.
+                        """)
+                    
+                    with adv_tab2:
+                        # Plot risk/return bubble chart
+                        fig_risk = plot_bond_risk_return(
+                            sorted_bonds,
+                            title=f"Bond Risk-Return Profile - {country_name}"
+                        )
+                        
+                        st.plotly_chart(fig_risk, use_container_width=True)
+                        
+                        st.markdown("""
+                        ### Interpretation:
+                        - **X-Achse**: Modified Duration (Risikomaß - höhere Werte bedeuten mehr Zinsrisiko)
+                        - **Y-Achse**: Yield to Maturity (Rendite)
+                        - **Blasengröße**: Laufzeit der Anleihe
+                        - **Farbe**: Realzins (grün = höher, rot = niedriger)
+                        
+                        Die Trendlinie zeigt die typische Beziehung zwischen Risiko und Rendite.
+                        """)
+                    
+                    with adv_tab3:
+                        # Price sensitivity for a selected bond
+                        selected_bond_name = st.selectbox(
+                            "Anleihe für Preissensitivitätsanalyse:",
+                            options=[bond["Name"] for bond in sorted_bonds],
+                            index=0
+                        )
+                        
+                        # Find the selected bond
+                        selected_bond = next(
+                            (bond for bond in sorted_bonds if bond["Name"] == selected_bond_name),
+                            sorted_bonds[0]
+                        )
+                        
+                        # Plot price sensitivity with enhanced visuals
+                        fig_sensitivity = plot_price_sensitivity(selected_bond)
+                        st.plotly_chart(fig_sensitivity, use_container_width=True)
+                        
+                        # Add some explanatory text
+                        st.markdown(f"""
+                        ### Preissensitivität für {selected_bond_name}:
+                        - **Duration**: {selected_bond.get("Duration", 0):.2f} Jahre
+                        - **Modified Duration**: {selected_bond.get("Mod. Duration", 0):.2f}
+                        - **Convexity**: {selected_bond.get("Convexity", 0):.2f}
+                        
+                        Die Grafik zeigt, wie der Preis auf Zinsänderungen reagiert. Die rote Kurve (mit Convexity) 
+                        ist präziser für größere Zinsänderungen als die blaue Kurve (nur Duration).
+                        """)
         else:
             st.info("Bitte wähle vordefinierte Anleihen oder füge eigene hinzu.")
     

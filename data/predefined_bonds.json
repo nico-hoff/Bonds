@@ -7,33 +7,33 @@
         "name": "2-Year Treasury",
         "years_to_maturity": 2,
         "face_value": 1000,
-        "coupon_rate": 4.1,
-        "price": 996.2,
-        "inflation": 2.5
+        "coupon_rate": 3.9317348649259753,
+        "price": 990.5366386170507,
+        "inflation": 2.536742607073821
       },
       {
         "name": "5-Year Treasury",
         "years_to_maturity": 5,
         "face_value": 1000,
-        "coupon_rate": 3.9,
-        "price": 982.3,
-        "inflation": 2.5
+        "coupon_rate": 3.8345624853348537,
+        "price": 979.3802004137042,
+        "inflation": 2.5446336414507567
       },
       {
         "name": "10-Year Treasury",
         "years_to_maturity": 10,
         "face_value": 1000,
-        "coupon_rate": 4.2,
-        "price": 975.6,
-        "inflation": 2.5
+        "coupon_rate": 4.320855341915067,
+        "price": 968.4717380429406,
+        "inflation": 2.40594156952517
       },
       {
         "name": "30-Year Treasury",
         "years_to_maturity": 30,
         "face_value": 1000,
-        "coupon_rate": 4.5,
-        "price": 960.4,
-        "inflation": 2.5
+        "coupon_rate": 4.528005606107992,
+        "price": 957.677054892066,
+        "inflation": 2.618222077227712
       }
     ]
   },
@@ -45,33 +45,33 @@
         "name": "2-Year Schatz",
         "years_to_maturity": 2,
         "face_value": 1000,
-        "coupon_rate": 2.8,
-        "price": 997.5,
-        "inflation": 2.2
+        "coupon_rate": 2.81071415264743,
+        "price": 987.7454916025855,
+        "inflation": 2.1447245375738624
       },
       {
         "name": "5-Year Bobl",
         "years_to_maturity": 5,
         "face_value": 1000,
-        "coupon_rate": 2.5,
-        "price": 985.2,
-        "inflation": 2.2
+        "coupon_rate": 2.6004556895615467,
+        "price": 979.1337906449094,
+        "inflation": 2.1123145082074877
       },
       {
         "name": "10-Year Bund",
         "years_to_maturity": 10,
         "face_value": 1000,
-        "coupon_rate": 2.7,
-        "price": 978.1,
-        "inflation": 2.2
+        "coupon_rate": 2.6490016174291644,
+        "price": 978.2008254245085,
+        "inflation": 2.30022621358456
       },
       {
         "name": "30-Year Bund",
         "years_to_maturity": 30,
         "face_value": 1000,
-        "coupon_rate": 2.9,
-        "price": 958.7,
-        "inflation": 2.2
+        "coupon_rate": 2.9424099643964623,
+        "price": 960.4074585597538,
+        "inflation": 2.3020156909436573
       }
     ]
   },
@@ -83,33 +83,33 @@
         "name": "2-Year JGB",
         "years_to_maturity": 2,
         "face_value": 1000,
-        "coupon_rate": 0.2,
-        "price": 998.8,
-        "inflation": 1.0
+        "coupon_rate": 0.30335047456291947,
+        "price": 993.6758181412,
+        "inflation": 1.0199273833958211
       },
       {
         "name": "5-Year JGB",
         "years_to_maturity": 5,
         "face_value": 1000,
-        "coupon_rate": 0.5,
-        "price": 995.3,
-        "inflation": 1.0
+        "coupon_rate": 0.5955668936305069,
+        "price": 995.9151280996969,
+        "inflation": 1.0718270772954894
       },
       {
         "name": "10-Year JGB",
         "years_to_maturity": 10,
         "face_value": 1000,
-        "coupon_rate": 1.0,
-        "price": 990.5,
-        "inflation": 1.0
+        "coupon_rate": 1.2170705062468443,
+        "price": 998.2191587111307,
+        "inflation": 1.294257543374175
       },
       {
         "name": "30-Year JGB",
         "years_to_maturity": 30,
         "face_value": 1000,
-        "coupon_rate": 1.5,
-        "price": 982.1,
-        "inflation": 1.0
+        "coupon_rate": 1.4221274809245503,
+        "price": 975.5198206476379,
+        "inflation": 1.1607413520252887
       }
     ]
   },
@@ -121,34 +121,34 @@
         "name": "2-Year Gilt",
         "years_to_maturity": 2,
         "face_value": 1000,
-        "coupon_rate": 3.7,
-        "price": 998.2,
-        "inflation": 2.8
+        "coupon_rate": 3.7796811661922436,
+        "price": 995.3353628841082,
+        "inflation": 2.826065603228196
       },
       {
         "name": "5-Year Gilt",
         "years_to_maturity": 5,
         "face_value": 1000,
-        "coupon_rate": 3.9,
-        "price": 988.6,
-        "inflation": 2.8
+        "coupon_rate": 3.86283670423115,
+        "price": 989.9853117889536,
+        "inflation": 3.046888948135796
       },
       {
         "name": "10-Year Gilt",
         "years_to_maturity": 10,
         "face_value": 1000,
-        "coupon_rate": 4.1,
-        "price": 972.5,
-        "inflation": 2.8
+        "coupon_rate": 4.354179210117463,
+        "price": 968.9810063937718,
+        "inflation": 2.7524166027891166
       },
       {
         "name": "30-Year Gilt",
         "years_to_maturity": 30,
         "face_value": 1000,
-        "coupon_rate": 4.5,
-        "price": 959.1,
-        "inflation": 2.8
+        "coupon_rate": 4.398813653255606,
+        "price": 944.716926752522,
+        "inflation": 2.4921964923950797
       }
     ]
   }
-} 
+}
