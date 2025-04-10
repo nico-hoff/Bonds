@@ -1,0 +1,154 @@
+{
+  "US": {
+    "name": "United States Treasury",
+    "currency": "USD",
+    "bonds": [
+      {
+        "name": "2-Year Treasury",
+        "years_to_maturity": 2,
+        "face_value": 1000,
+        "coupon_rate": 4.1,
+        "price": 996.2,
+        "inflation": 2.5
+      },
+      {
+        "name": "5-Year Treasury",
+        "years_to_maturity": 5,
+        "face_value": 1000,
+        "coupon_rate": 3.9,
+        "price": 982.3,
+        "inflation": 2.5
+      },
+      {
+        "name": "10-Year Treasury",
+        "years_to_maturity": 10,
+        "face_value": 1000,
+        "coupon_rate": 4.2,
+        "price": 975.6,
+        "inflation": 2.5
+      },
+      {
+        "name": "30-Year Treasury",
+        "years_to_maturity": 30,
+        "face_value": 1000,
+        "coupon_rate": 4.5,
+        "price": 960.4,
+        "inflation": 2.5
+      }
+    ]
+  },
+  "DE": {
+    "name": "German Federal Bonds (Bunds)",
+    "currency": "EUR",
+    "bonds": [
+      {
+        "name": "2-Year Schatz",
+        "years_to_maturity": 2,
+        "face_value": 1000,
+        "coupon_rate": 2.8,
+        "price": 997.5,
+        "inflation": 2.2
+      },
+      {
+        "name": "5-Year Bobl",
+        "years_to_maturity": 5,
+        "face_value": 1000,
+        "coupon_rate": 2.5,
+        "price": 985.2,
+        "inflation": 2.2
+      },
+      {
+        "name": "10-Year Bund",
+        "years_to_maturity": 10,
+        "face_value": 1000,
+        "coupon_rate": 2.7,
+        "price": 978.1,
+        "inflation": 2.2
+      },
+      {
+        "name": "30-Year Bund",
+        "years_to_maturity": 30,
+        "face_value": 1000,
+        "coupon_rate": 2.9,
+        "price": 958.7,
+        "inflation": 2.2
+      }
+    ]
+  },
+  "JP": {
+    "name": "Japanese Government Bonds",
+    "currency": "JPY",
+    "bonds": [
+      {
+        "name": "2-Year JGB",
+        "years_to_maturity": 2,
+        "face_value": 1000,
+        "coupon_rate": 0.2,
+        "price": 998.8,
+        "inflation": 1.0
+      },
+      {
+        "name": "5-Year JGB",
+        "years_to_maturity": 5,
+        "face_value": 1000,
+        "coupon_rate": 0.5,
+        "price": 995.3,
+        "inflation": 1.0
+      },
+      {
+        "name": "10-Year JGB",
+        "years_to_maturity": 10,
+        "face_value": 1000,
+        "coupon_rate": 1.0,
+        "price": 990.5,
+        "inflation": 1.0
+      },
+      {
+        "name": "30-Year JGB",
+        "years_to_maturity": 30,
+        "face_value": 1000,
+        "coupon_rate": 1.5,
+        "price": 982.1,
+        "inflation": 1.0
+      }
+    ]
+  },
+  "UK": {
+    "name": "UK Government Bonds (Gilts)",
+    "currency": "GBP",
+    "bonds": [
+      {
+        "name": "2-Year Gilt",
+        "years_to_maturity": 2,
+        "face_value": 1000,
+        "coupon_rate": 3.7,
+        "price": 998.2,
+        "inflation": 2.8
+      },
+      {
+        "name": "5-Year Gilt",
+        "years_to_maturity": 5,
+        "face_value": 1000,
+        "coupon_rate": 3.9,
+        "price": 988.6,
+        "inflation": 2.8
+      },
+      {
+        "name": "10-Year Gilt",
+        "years_to_maturity": 10,
+        "face_value": 1000,
+        "coupon_rate": 4.1,
+        "price": 972.5,
+        "inflation": 2.8
+      },
+      {
+        "name": "30-Year Gilt",
+        "years_to_maturity": 30,
+        "face_value": 1000,
+        "coupon_rate": 4.5,
+        "price": 959.1,
+        "inflation": 2.8
+      }
+    ]
+  }
+} 
